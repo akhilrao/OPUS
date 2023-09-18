@@ -30,11 +30,11 @@ This repository provides a comprehensive package for the replication and extensi
 
 ### Initialization and Scenario Setup (`conductor.sh`)
 
-1. **Initialization**: Sets up initial parameters like MATLAB solver to use (`iam_solver.m`), optional analytics script (`analytics.R`), and the type of propagator (MOCAT or GMPHD).
+1. **Initialization**: Sets up initial parameters like MATLAB solver to use (`iam_solver.m`), and behaviors (`equilibrium' and `sat_feedback').
 
-2. **Scenario Setup**: Initializes scenarios to run and sets up paths for associated CSV files.
+2. **Scenario Setup**: Initializes scenarios to run, propagators type selection (`MOCAT' or `GMPHD'), and sets up paths for associated CSV files.
 
-3. **Execution and Post-Processing Loop**: Executes the IAM for each scenario and runs the analytics.
+3. **Execution and Post-Processing Loop**: Executes the IAM for each scenario (MATLAB) and runs analytics (R).
 
 ### IAM Solver (`iam_solver.m`)
 
@@ -48,4 +48,4 @@ This MATLAB script includes several key steps, such as initialization, parameter
 
 ## Acknowledgments
 
-This work was supported by NASA ROSES.
+This work was supported by NASA ROSES grant _____.
