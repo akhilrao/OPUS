@@ -13,17 +13,17 @@ library(scales)
 source("analytics-functions.R")
 
 # Read in command line arguments: stem, model_type, and launch_pattern_type, and model_horizon
-# args = commandArgs(trailingOnly = TRUE)
-# stem = args[1]
-# model_type = args[2]
-# launch_pattern_type = args[3]
-# model_horizon = args[4]
+args = commandArgs(trailingOnly = TRUE)
+stem = args[1]
+model_type = args[2]
+launch_pattern_type = args[3]
+model_horizon = args[4]
 
 # Script version
-stem = "destroying-termite-verbalize-Zinnia"
-model_type = "GMPHD"
-launch_pattern_type = "equilibrium"
-model_horizon = "10"
+# stem = "destroying-termite-verbalize-Zinnia"
+# model_type = "GMPHD"
+# launch_pattern_type = "equilibrium"
+# model_horizon = "10"
 
 # Construct input filename
 input_name = paste0(stem, "-", model_type, "-", launch_pattern_type, "-", model_horizon, "yrs") #Input filename

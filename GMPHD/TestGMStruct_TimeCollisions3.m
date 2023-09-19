@@ -100,3 +100,70 @@ title(strjoin(["Shell",num2str(abounds(i)-GMPHD_params.rE),"-",num2str(abounds(i
 end
 
 
+
+figure(2)
+plot(t(i_collisions)./(365.25*24*60*60),shellstruct(1).nconst,'c')
+hold on
+plot(t(i_collisions)./(365.25*24*60*60),shellstruct(1).nfringe,'c.-')
+
+plot(t(i_collisions)./(365.25*24*60*60),shellstruct(2).nconst,'m')
+plot(t(i_collisions)./(365.25*24*60*60),shellstruct(2).nfringe,'m.-')
+legend('Lower Shell, Const','Lower Shell, Fringe','Upper Shell, Const','Upper Shell, Fringe')
+xlabel('Time [Years]')
+ylabel('Num Sats')
+% save figure to file named GM2.png
+print -dpng GM2.png
+
+% Plot collisions at each time step in each shell
+figure(3)
+for i=1:16
+    plot(t(i_collisions)./(365.25*24*60*60),shellstruct(i).ncoll)
+    hold on
+end
+xlabel('Time [Years]')
+ylabel('Number Collisions')
+legend('Shell 1','Shell 2','Shell 3','Shell 4','Shell 5','Shell 6','Shell 7','Shell 8','Shell 9','Shell 10','Shell 11','Shell 12','Shell 13','Shell 14','Shell 15','Shell 16')
+% save figure to file named GM3.png
+print -dpng GM3.png
+
+
+rbounds=[0,0.1/1000,0.5/1000,3/1000]
+abounds=[300:35:1700]+GMPHD_params.rE;
+
+[numdeb]=PostprocessDebris(GM1,t,abounds,rbounds);
+
+for i=1:(length(abounds)-1)
+figure(100+i)
+plot(t./(365.25*24*60*60),squeeze(numdeb(:,i,:)))
+xlabel("Time [years]")
+ylabel("Num Debris []")
+legend("Lethal Non-Trackable","Trackable","Large")
+title(strjoin(["Shell",num2str(i),num2str(abounds(i)-GMPHD_params.rE),"-",num2str(abounds(i+1)-GMPHD_params.rE),"km Altitude"]))
+print(strjoin(["Shell",num2str(i),num2str(abounds(i)-GMPHD_params.rE),"-",num2str(abounds(i+1)-GMPHD_params.rE),"km_Altitude.png"],''),'-dpng')
+end
+
+%%
+
+nx=1000
+ny=100
+
+xim=linspace(GMPHD_params.rE,GMPHD_params.rE+1500,nx);
+yim=linspace(0,3/1000,ny);
+
+v = VideoWriter('debris_10year.mp4','MPEG-4');
+open(v)
+for i = 1:length(t)
+    figure(1000)
+    [h,X1,X2,yi0] = PlotDist(xim,yim,squeeze(GM1(i,:)),1);
+    clim([0,3000000])
+    colorbar
+    title(t(i)/(365.25*24*60*60))
+    drawnow
+    frame = getframe(gcf);
+
+    writeVideo(v,frame);
+
+end
+
+close(v)
+
