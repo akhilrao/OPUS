@@ -48,4 +48,4 @@ This MATLAB script includes several key steps, such as initialization, parameter
 
 ## Acknowledgments
 
-This work was supported by NASA ROSES grant _____.
+This work was supported by NASA ROSES 2022 grant funding.
