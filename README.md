@@ -1,6 +1,6 @@
 # OPUS (Orbital Debris Propagators Unified with Economic Systems): An Integrated Assessment Model for Satellites and Orbital Debris
 
-This repository provides a comprehensive package for the replication and extension of the Integrated Assessment Model (IAM) described in the accompanying paper. The IAM focuses on simulating the evolution of orbital environments and is implemented primarily using MATLAB for the core simulation and R for post-simulation analytics.
+This repository provides a comprehensive package for the replication and extension of the Integrated Assessment Model (IAM) described in the accompanying paper: [https://arxiv.org/abs/2309.10252](https://arxiv.org/abs/2309.10252) . The IAM focuses on simulating the evolution of orbital environments and is implemented primarily using MATLAB for the core simulation and R for post-simulation analytics.
 
 ## Repository Structure
 
