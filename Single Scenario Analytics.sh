@@ -17,6 +17,8 @@ R_SCRIPT="analytics.R"
 # Select the scenarios to process. Store them in an array. Directly use human-readable names here, this script only runs R files.
 scenario_names=(
                 "staying-coral-stew-Soybean"
+		"generous-turtle-tastes-Hibiscus"
+		"loving-dingo-vocalize-Horseradish"
                 )
 
 ### 3.  EXECUTION
