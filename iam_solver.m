@@ -313,6 +313,13 @@ for timeIDX = 1:length(tf)-1
         tspan = linspace(tf(timeIDX),tf(timeIDX+1),VAR.N_step); % Create linearly-spaced vector from tf(t):tf(t+1) with VAR.N_step points. This is the within-year time-stepper for integration.
         OUT = MOCAT4S(tspan, x0, lam, VAR); % Propagate for the first time period
         lam(:,2) = 1/(+VAR.Dt) * OUT.Su(end,:)'; % Unslotted objects, approximate replacement rate feedback rule
+
+    % Update initial conditions for next period
+        x0 = [OUT.S(end,:)'; OUT.D(end,:)'; OUT.N(end,:)'; OUT.Su(end,:)'];
+        % Concatenate states and launch rates
+        X = [X;x0'];
+        LAM1 = [LAM1;lam(:,1)'];
+        LAM2 = [LAM2;lam(:,2)'];
     end
 
     %% Fringe equilibrium controller
