@@ -10,13 +10,19 @@ This repository provides a comprehensive package for the replication and extensi
 
 - **`iam_solver.m`**: This is the main solver file implemented in MATLAB. It performs the time-stepped simulation of the orbital environment based on a set of input parameters and scenarios.
 
+- **`single scenario analytics.sh`**: This Bash shell script utilizes the analytics.r file to output summary statistics and visualizations for a selected simulation.
+
+- **`comparison analytics.sh`**: This Bash shell script utilizes the compare-two-scenarios.r file to output visualizations comparing two selected simulations.
+
 ### Supporting Scripts
 
 - **`analytics.R`**: This R script handles the analysis and visualization of the simulation results.
 
+- **`compare-two-scenarios.R`**: This R script handles the comparison and visualization of a set of simulation results.
+
 - **`MOCAT4S/` and `GMPHD/`**: These directories contain the MATLAB scripts for the MOCAT and GMPHD propagators respectively.
 
-- **`historical-data/`**: This folder contains the historical data needed for various scenarios.
+- **`x0_TLE/`**: This folder contains the historical data needed for various scenarios.
 
 - **`scenarios/`**: This folder contains CSV files that define different scenarios for the model.
 
@@ -34,7 +40,7 @@ This repository provides a comprehensive package for the replication and extensi
 
 2. **Scenario Setup**: Initializes scenarios to run, propagators type selection (`MOCAT` or `GMPHD`), and sets up paths for associated CSV files.
 
-3. **Execution and Post-Processing Loop**: Executes the IAM for each scenario (MATLAB) and runs analytics (R).
+3. **Execution**: Executes the IAM for each scenario (MATLAB).
 
 ### IAM Solver (`iam_solver.m`)
 
@@ -43,8 +49,7 @@ This MATLAB script includes several key steps, such as initialization, parameter
 ## Usage
 
 1. Clone the repository.
-2. Navigate to the root directory.
-3. Run `./conductor.sh` in the shell.
+2. Refer to the User Guide to produce simulations.
 
 ## Acknowledgments
 
