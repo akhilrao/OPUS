@@ -45,17 +45,17 @@ unique_name_array=()
 for scenario_file in "${scenario_files[@]}"
 do
     # Call the scenarioNamer function with the parameter file as an argument
-    matlab -nosplash -nodesktop -r "scenarioNamer('$scenario_file', '$model_type'); exit;"
+    matlab -nosplash -nodesktop -r -wait "scenarioNamer('$scenario_file', '$model_type'); exit;"
 
     # Read the unique name from the scenario_name.txt file
     unique_name=$(cat scenario_name.txt)
     unique_name_array+=("$unique_name")
 
     # Launch behavior 1: Equilibrium, MOCAT or GMPHD
-    matlab -nosplash -nodesktop -r "iam_solver('$unique_name', '$model_type', '$launch_pattern_type_equilibrium', '$scenario_file', '$model_horizon', '$n_workers'); exit;"
+    matlab -nosplash -nodesktop -r -wait "iam_solver('$unique_name', '$model_type', '$launch_pattern_type_equilibrium', '$scenario_file', '$model_horizon', '$n_workers'); exit;"
 
     # Launch behavior 2: Feedback, MOCAT only
-    matlab -nosplash -nodesktop -r "iam_solver('$unique_name', 'MOCAT', '$launch_pattern_type_feedback', '$scenario_file', '$model_horizon', '$n_workers'); exit;"
+    matlab -nosplash -nodesktop -r -wait "iam_solver('$unique_name', 'MOCAT', '$launch_pattern_type_feedback', '$scenario_file', '$model_horizon', '$n_workers'); exit;"
 
     # Tell them you're done buddy!
     echo "Scenario $scenario_file complete!"
